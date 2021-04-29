@@ -68,3 +68,13 @@ print(last_three)   # hon
 language = 'Python'
 pto = language[0:6:2] # [0 - start: 6 - end: 2 - every [num] grab]
 print(pto) # pto
+
+# ESC SEQUENCE
+print('I hope this is another hello world!.\nIs it?') # line break
+print('Days\tTopics\tExercises')
+print('Day 1\t3\t5')
+print('Day 2\t3\t5')
+print('Day 3\t3\t5')
+print('Day 4\t3\t5')
+print('This is a back slash  symbol (\\)') # To write a back slash
+print('In every programming language it starts with \"Hello, World!\"')
