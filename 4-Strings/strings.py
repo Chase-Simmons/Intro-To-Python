@@ -124,3 +124,45 @@ pi = 3.14
 area = pi # radius ## 2
 result = 'The area of circle with {} is {}'.format(str(radius), str(area))
 print(result) # The area of circle with 10 is 314.0
+
+# isalnum(): Checks alphanumeric character
+
+challenge = 'ThirtyDaysPython'
+print(challenge.isalnum()) # True
+
+challenge = '30DaysPython'
+print(challenge.isalnum()) # True
+
+challenge = 'thirty days of python'
+print(challenge.isalnum()) # False
+
+challenge = 'thirty days of python 2019'
+print(challenge.isalnum()) # False
+
+# isalpha(): Checks if all characters are alphabets
+
+challenge = 'thirty days of python'
+print(challenge.isalpha()) # True
+num = '123'
+print(num.isalpha())      # False
+
+# isdigit(): Checks Digit Characters
+
+challenge = 'Thirty'
+print(challenge.isdigit()) # False
+challenge = '30'
+print(challenge.digit())   # True
+
+# isdecimal():Checks decimal characters
+
+num = '10'
+print(num.isdecimal()) # True
+num = '10.5'
+print(num.isdecimal()) # False
+
+# isidentifier():Checks for valid identifier means it check if a string is a valid variable name
+
+challenge = '30DaysOfPython'
+print(challenge.isidentifier()) # False, because it starts with a number
+challenge = 'thirty_days_of_python'
+print(challenge.isidentifier()) # True
