@@ -78,3 +78,22 @@ print('Day 3\t3\t5')
 print('Day 4\t3\t5')
 print('This is a back slash  symbol (\\)') # To write a back slash
 print('In every programming language it starts with \"Hello, World!\"')
+
+# STRING METHODS
+# capitalize(): Converts the first character the string to Capital Letter
+
+challenge = 'thirty days of python'
+print(challenge.capitalize()) # 'Thirty days of python'
+
+# count(): returns occurrences of substring in string, count(substring, start=.., end=..)
+
+challenge = 'thirty days of python'
+print(challenge.count('y')) # 3
+print(challenge.count('y', 7, 14)) # 1
+print(challenge.count('th')) # 2`
+
+# endswith(): Checks if a string ends with a specified ending
+
+challenge = 'thirty days of python'
+print(challenge.endswith('on'))   # True
+print(challenge.endswith('tion')) # False
