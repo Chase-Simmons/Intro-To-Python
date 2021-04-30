@@ -80,6 +80,7 @@ print('This is a back slash  symbol (\\)') # To write a back slash
 print('In every programming language it starts with \"Hello, World!\"')
 
 # STRING METHODS
+
 # capitalize(): Converts the first character the string to Capital Letter
 
 challenge = 'thirty days of python'
@@ -97,3 +98,29 @@ print(challenge.count('th')) # 2`
 challenge = 'thirty days of python'
 print(challenge.endswith('on'))   # True
 print(challenge.endswith('tion')) # False
+
+# expandtabs(): Replaces tab character with spaces, default tab size is 8. It takes tab size argument
+
+challenge = 'thirty\tdays\tof\tpython'
+print(challenge.expandtabs())   # 'thirty  days    of      python'
+print(challenge.expandtabs(10)) # 'thirty    days      of        python'
+
+# find(): Returns the index of first occurrence of substring
+
+challenge = 'thirty days of python'
+print(challenge.find('y'))  # 5
+print(challenge.find('th')) # 0
+
+# format()	formats string into nicer output    
+first_name = 'Chase'
+last_name = 'Simmons'
+job = 'Student'
+country = 'United States'
+sentence = 'I am {} {}. I am a {}. I live in {}.'.format(first_name, last_name, job, country)
+print(sentence) # I am Chase Simmons. I am a Student. I live in United States.
+
+radius = 10
+pi = 3.14
+area = pi # radius ## 2
+result = 'The area of circle with {} is {}'.format(str(radius), str(area))
+print(result) # The area of circle with 10 is 314.0
