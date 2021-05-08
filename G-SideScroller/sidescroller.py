@@ -13,8 +13,6 @@ dirt_img = pygame.image.load('dirt.png')
 player_image = pygame.image.load('player.png')
 
 
-print(player.moving_right)
-
 player_bounds = pygame.Rect(player.x, player.y, player_image.get_width(), player_image.get_height())
 
 test_bounds = pygame.Rect(0, 600, 1200, 50)
@@ -55,24 +53,26 @@ while True:
     screen.fill((146, 244, 255))
     screen.blit(player_image, (player.x, player.y))
 
-    if player.y > WINDOW_SIZE[1]-player_image.get_height():
-        player.vertical_momentum = -player.vertical_momentum
+    if player.grounded is False:
+        player.vertical_momentum = 5
     else:
-        player.vertical_momentum += 0.2
+        player.vertical_momentum = 0
 
     player.y += player.vertical_momentum
     player_bounds.x = player.x
     player_bounds.y = player.y
 
-    if player.moving_right == True:
+    if player.moving_right:
         player.x += 4
-    if player.moving_left == True:
+    if player.moving_left:
         player.x -= 4
 
     if player_bounds.colliderect(test_bounds):
         pygame.draw.rect(screen, (255, 0, 0), test_bounds)
+        player.grounded = True
     else:
         pygame.draw.rect(screen, (0, 0, 0), test_bounds)
+        player.grounded = False
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -83,6 +83,9 @@ while True:
                 player.moving_right = True
             if event.key == K_a:
                 player.moving_left = True
+            if event.key == K_SPACE and player.grounded is not False:
+                player.y -= 150
+                player.grounded = False
         if event.type == KEYUP:
             if event.key == K_d:
                 player.moving_right = False
