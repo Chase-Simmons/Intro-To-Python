@@ -15,26 +15,42 @@ player_image = pygame.image.load('player.png')
 moving_right = False
 moving_left = False
 
-player_location = [50, 50]
+
+class Cords:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+player_location = Cords(50, 50)
 player_y_momentum = 0
+player_bounds = pygame.Rect(player_location.x, player_location.y, player_image.get_width(), player_image.get_height())
+
+test_bounds = pygame.Rect(100, 100, 100, 50)
+
 while True:
 
     screen.fill((146, 244, 255))
-    screen.blit(player_image, player_location)
+    screen.blit(player_image, (player_location.x, player_location.y))
 
-    if player_location[1] > WINDOW_SIZE[1]-player_image.get_height():
+    if player_location.y > WINDOW_SIZE[1]-player_image.get_height():
         player_y_momentum = -player_y_momentum
     else:
         player_y_momentum += 0.2
 
-    player_location[1] += player_y_momentum
+    player_location.y += player_y_momentum
+    player_bounds.x = player_location.x
+    player_bounds.y = player_location.y
 
     if moving_right == True:
-        player_location[0] += 4
-        print(player_location)
+        player_location.x += 4
     if moving_left == True:
-        player_location[0] -= 4
-        print(player_location)
+        player_location.x -= 4
+
+    if player_bounds.colliderect(test_bounds):
+        pygame.draw.rect(screen, (255, 0, 0), test_bounds)
+    else:
+        pygame.draw.rect(screen, (0, 0, 0), test_bounds)
 
     for event in pygame.event.get():
         if event.type == QUIT:
