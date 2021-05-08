@@ -16,9 +16,18 @@ moving_right = False
 moving_left = False
 
 player_location = [50, 50]
+player_y_momentum = 0
 while True:
 
+    screen.fill((146, 244, 255))
     screen.blit(player_image, player_location)
+
+    if player_location[1] > WINDOW_SIZE[1]-player_image.get_height():
+        player_y_momentum = -player_y_momentum
+    else:
+        player_y_momentum += 0.2
+
+    player_location[1] += player_y_momentum
 
     if moving_right == True:
         player_location[0] += 4
