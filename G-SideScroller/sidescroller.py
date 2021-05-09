@@ -16,6 +16,7 @@ player_image = pygame.image.load('player.png')
 player_bounds = pygame.Rect(player.x, player.y, player_image.get_width(), player_image.get_height())
 
 test_bounds = pygame.Rect(0, 600, 1200, 50)
+visual_test_bounds = pygame.Rect(0, 602, 1200, 50)
 
 
 def collision_test(bounds, tiles):
@@ -68,10 +69,10 @@ while True:
         player.x -= 4
 
     if player_bounds.colliderect(test_bounds):
-        pygame.draw.rect(screen, (255, 0, 0), test_bounds)
+        pygame.draw.rect(screen, (255, 0, 0), visual_test_bounds)
         player.grounded = True
     else:
-        pygame.draw.rect(screen, (0, 0, 0), test_bounds)
+        pygame.draw.rect(screen, (0, 0, 0), visual_test_bounds)
         player.grounded = False
 
     for event in pygame.event.get():
@@ -84,7 +85,7 @@ while True:
             if event.key == K_a:
                 player.moving_left = True
             if event.key == K_SPACE and player.grounded is not False:
-                player.y -= 150
+                player.y -= player_bounds.height*3
                 player.grounded = False
         if event.type == KEYUP:
             if event.key == K_d:
