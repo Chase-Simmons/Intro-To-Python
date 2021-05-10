@@ -11,7 +11,6 @@ class Player:
         self.vertical_momentum = 0
 
 
-def jump(player):
-    jump_state = [1, 2, 3]
-    player.jumping = False
-    print(player)
+
+
+

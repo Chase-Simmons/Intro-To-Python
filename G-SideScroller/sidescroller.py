@@ -51,7 +51,14 @@ def move(bounds, movement, tiles):
     return bounds, collision_types
 
 
+def jump():
+    player.y -= player_bounds.height * 3
+    player.jumping = False
+    print(frame)
+
+
 while True:
+
     frame += 1
 
     screen.fill((146, 244, 255))
@@ -88,8 +95,7 @@ while True:
             if event.key == K_a:
                 player.moving_left = True
             if event.key == K_SPACE and player.grounded is not False:
-                player.y -= player_bounds.height*3
-                player__init__.jump(player)
+                jump()
                 player.jumping = True
                 player.grounded = False
         if event.type == KEYUP:
