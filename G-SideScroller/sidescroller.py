@@ -12,6 +12,8 @@ screen = pygame.display.set_mode(WINDOW_SIZE, 0, 32)
 dirt_img = pygame.image.load('dirt.png')
 player_image = pygame.image.load('player.png')
 
+frame = 0
+
 
 player_bounds = pygame.Rect(player.x, player.y, player_image.get_width(), player_image.get_height())
 
@@ -50,6 +52,7 @@ def move(bounds, movement, tiles):
 
 
 while True:
+    frame += 1
 
     screen.fill((146, 244, 255))
     screen.blit(player_image, (player.x, player.y))
@@ -86,6 +89,8 @@ while True:
                 player.moving_left = True
             if event.key == K_SPACE and player.grounded is not False:
                 player.y -= player_bounds.height*3
+                player__init__.jump(player)
+                player.jumping = True
                 player.grounded = False
         if event.type == KEYUP:
             if event.key == K_d:
